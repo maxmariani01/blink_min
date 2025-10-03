@@ -1,0 +1,15 @@
+/build/
+/managed_components/
+/CMakeFiles/
+/cmake-build-*/
+/*.cmake
+/compile_commands.json
+/flash_project_args
+/sdkconfig.old
+/.cache/
+/*.log
+__pycache__/
+*.pyc
+.vscode/
+.idea/
+*.core

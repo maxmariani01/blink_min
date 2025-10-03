@@ -37,7 +37,7 @@ void app_main(void) {
 
     // Tiempos de subida y bajada de la respiración (en milisegundos)
     const int up_ms = 1200;   // Subir brillo 0 -> 1023 en 1.2 s
-    const int dn_ms = 1200;   // Bajar brillo 1023 -> 0 en 1.2 s
+    const int dn_ms = 300;   // Bajar brillo 1023 -> 0 en 1.2 s
 
     // --- 4) Bucle principal: pedir rampas y esperar a que terminen ---
     while (1) {

@@ -1,0 +1,10 @@
+menu "Blink settings"
+config BLINK_GPIO
+    int "LED GPIO"
+    default 4
+    range 0 21
+config BLINK_DELAY_MS
+    int "Blink period (ms)"
+    default 200
+    range 10 5000
+endmenu

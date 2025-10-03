@@ -1,26 +1,22 @@
-#include <stdint.h>
+#include "sdkconfig.h"
 #include "driver/gpio.h"
-#define LED_GPIO 4   // LED externo en GPIO4
-static void delay_loop(volatile uint32_t ticks) {
-    while (ticks--) {
-        __asm__ __volatile__("nop");
-    }
-}
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+
 void app_main(void) {
-    // Configurar GPIO4 como salida
     gpio_config_t io = {
-        .pin_bit_mask = 1ULL << LED_GPIO,
+        .pin_bit_mask = 1ULL << CONFIG_BLINK_GPIO,
         .mode = GPIO_MODE_OUTPUT,
         .pull_up_en = 0,
         .pull_down_en = 0,
         .intr_type = GPIO_INTR_DISABLE
     };
     gpio_config(&io);
-    // Parpadear
+
     while (1) {
-        gpio_set_level(LED_GPIO, 1);
-        delay_loop(10000000);   // ajustá este número para cambiar la velocidad
-        gpio_set_level(LED_GPIO, 0);
-        delay_loop(10000000);
+        gpio_set_level(CONFIG_BLINK_GPIO, 1);
+        vTaskDelay(pdMS_TO_TICKS(CONFIG_BLINK_DELAY_MS));
+        gpio_set_level(CONFIG_BLINK_GPIO, 0);
+        vTaskDelay(pdMS_TO_TICKS(CONFIG_BLINK_DELAY_MS));
     }
 }

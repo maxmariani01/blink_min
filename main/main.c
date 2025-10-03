@@ -19,8 +19,8 @@ void app_main(void) {
     // Parpadear
     while (1) {
         gpio_set_level(LED_GPIO, 1);
-        delay_loop(4000000);   // ajustá este número para cambiar la velocidad
+        delay_loop(10000000);   // ajustá este número para cambiar la velocidad
         gpio_set_level(LED_GPIO, 0);
-        delay_loop(2000000);
+        delay_loop(10000000);
     }
 }
